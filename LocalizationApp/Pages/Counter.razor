@@ -1,0 +1,21 @@
+﻿@page "/counter"
+@using Localization
+
+<PageTitle>Counter</PageTitle>
+
+<h1>@Localizer?.Counter.Title</h1>
+
+<p role="status">@Localizer?.Counter.CurrentCount(currentCount)</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">@Localizer?.Counter.Click</button>
+
+@code {
+    private int currentCount;
+    [Inject]
+    private Localizer? Localizer { get; set; }
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}

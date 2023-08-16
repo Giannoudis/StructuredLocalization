@@ -1,0 +1,59 @@
+﻿@using Localization
+@inherits LayoutComponentBase
+
+<PageTitle>@Localizer?.App.Title</PageTitle>
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <InputSelect @bind-Value="CurrentLanguage">
+                @foreach (var value in Cultures.SupportedCultures)
+                {
+                    <option>@value</option>
+                }
+            </InputSelect>
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">@Localizer?.App.About</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+@code
+{
+    [Inject]
+    private NavigationManager? NavigationManager { get; set; }
+    [Inject]
+    private Localizer? Localizer { get; set; }
+
+    private string currentLanguage { get; set; } = Cultures.CurrentCulture().Name;
+    private string CurrentLanguage
+    {
+        get => currentLanguage;
+        set
+        {
+            if (string.Equals(value, currentLanguage))
+            {
+                return;
+            }
+
+            Cultures.ApplyCulture(value);
+            currentLanguage = value;
+            RefreshPage();
+        }
+    }
+
+    private void RefreshPage()
+    {
+        if (NavigationManager != null)
+        {
+            NavigationManager.NavigateTo(NavigationManager.Uri, true);
+        }
+    }
+}

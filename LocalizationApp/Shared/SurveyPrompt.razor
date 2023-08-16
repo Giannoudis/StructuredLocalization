@@ -1,0 +1,19 @@
+﻿@using Localization
+<div class="alert alert-secondary mt-4">
+    <span class="oi oi-pencil me-2" aria-hidden="true"></span>
+    <strong>@Title</strong>
+
+    <span class="text-nowrap">
+        @Localizer?.Survey.PromptStart
+        <a target="_blank" class="font-weight-bold link-dark" href="https://go.microsoft.com/fwlink/?linkid=2186158">@Localizer?.Survey.PromptSurvey</a>
+    </span>
+    @Localizer?.Survey.PromptEnd
+</div>
+
+@code {
+    // Demonstrates how a parent component can supply parameters
+    [Parameter]
+    public string? Title { get; set; }
+    [Inject]
+    protected Localizer? Localizer { get; set; }
+}

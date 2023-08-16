@@ -1,0 +1,30 @@
+﻿@page "/"
+@using Localization
+
+<PageTitle>@Localizer?.Home.Title</PageTitle>
+
+<h1>@Localizer?.Home.Header</h1>
+
+@Localizer?.Home.Welcome
+
+<SurveyPrompt Title="@Localizer?.Home.SurveyTitle" />
+
+@Localizer?.Home.EnumLocalization
+<InputSelect @bind-Value="CurrentColor">
+    @foreach (var value in Enum.GetValues(typeof(Color)))
+    {
+        <option>@Localizer?.Enum((Color)value)</option>
+    }
+</InputSelect>
+
+@code {
+    [Inject]
+    private Localizer? Localizer { get; set; }
+    private string? CurrentColor { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        CurrentColor = Localizer?.Enum(Color.Red);
+        return base.OnInitializedAsync();
+    }
+}

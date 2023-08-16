@@ -1,0 +1,50 @@
+﻿@page "/fetchdata"
+@using LocalizationApp.Data
+@using Localization
+@inject WeatherForecastService ForecastService
+
+<PageTitle>@Localizer?.Forecast.Title</PageTitle>
+
+<h1>@Localizer?.Forecast.Title</h1>
+
+<p>@Localizer?.Forecast.Description</p>
+
+@if (forecasts == null)
+{
+    <p><em>@Localizer?.App.Loading</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Localizer?.Forecast.Date</th>
+                <th>@Localizer?.Forecast.TempCelsius</th>
+                <th>@Localizer?.Forecast.TempFahrenheit</th>
+                <th>@Localizer?.Forecast.Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private WeatherForecast[]? forecasts;
+    [Inject]
+    private Localizer? Localizer { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTime.Now));
+    }
+}
