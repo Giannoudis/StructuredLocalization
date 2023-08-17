@@ -9,10 +9,10 @@ public class ForecastLocalizer : LocalizerBase
     {
     }
 
-    public string Title => PropertyValue();
-    public string Description => PropertyValue();
-    public string Date => PropertyValue();
-    public string TempCelsius => PropertyValue();
-    public string TempFahrenheit => PropertyValue();
-    public string Summary => PropertyValue();
+    public string Title => Localization();
+    public string Description => Localization();
+    public string Date => Localization();
+    public string TempCelsius => Localization();
+    public string TempFahrenheit => Localization();
+    public string Summary => Localization();
 }

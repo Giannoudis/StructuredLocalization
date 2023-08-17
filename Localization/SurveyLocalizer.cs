@@ -9,7 +9,7 @@ public class SurveyLocalizer : LocalizerBase
     {
     }
 
-    public string PromptStart => PropertyValue();
-    public string PromptSurvey => PropertyValue();
-    public string PromptEnd => PropertyValue();
+    public string PromptStart => Localization();
+    public string PromptSurvey => Localization();
+    public string PromptEnd => Localization();
 }

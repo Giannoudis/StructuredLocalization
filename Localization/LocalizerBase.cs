@@ -36,12 +36,12 @@ public abstract class LocalizerBase
     }
 
     /// <summary>
-    /// Retrieve translation from group and key
+    /// Retrieve localization from group and key
     /// Translation example: MyGroup.MyKey
     /// </summary>
     /// <param name="group">The localization group</param>
     /// <param name="key">The localization key</param>
-    private string Key(string? group, string? key)
+    private string Localization(string? group, string? key)
     {
         if (string.IsNullOrWhiteSpace(key))
         {
@@ -51,20 +51,12 @@ public abstract class LocalizerBase
     }
 
     /// <summary>
-    /// Retrieve translation from current group and key
-    /// Resource name: {InternalGroupName}.MyText
-    /// </summary>
-    /// <param name="key">The localization key</param>
-    private string Key(string? key) =>
-        Key(GroupName, key);
-
-    /// <summary>
-    /// Retrieve translation value from property key
+    /// Retrieve translation value from the caller
     /// Resource name: MyProperty.MyText
     /// </summary>
     /// <param name="caller">The caller method name</param>
-    protected string PropertyValue([CallerMemberName] string? caller = null) =>
-        Key(caller);
+    protected string Localization([CallerMemberName] string? caller = null) =>
+        Localization(GroupName, caller);
 
     /// <summary>
     /// Format translation value with one parameter
@@ -76,10 +68,10 @@ public abstract class LocalizerBase
         format.Replace($"{{{parameterName}}}", parameterValue.ToString());
 
     /// <summary>
-    /// Format translation value with two parameter
+    /// Format translation value with multiple parameters
     /// </summary>
     /// <param name="format">The value to format</param>
-    /// <param name="parameters">The parameters</param>
+    /// <param name="parameters">The format parameters</param>
     protected string ApplyParameters(string format, params Parameter[] parameters)
     {
         foreach (var parameter in parameters)
@@ -105,8 +97,9 @@ public abstract class LocalizerBase
             type = nullableType;
         }
 
+        // 
         var group = $"{nameof(System.Enum)}.{type.Name}";
-        var translation = Key(group, $"{value}");
+        var translation = Localization(group, $"{value}");
         // missing translation: return the enum value
         if (string.IsNullOrEmpty(translation) || translation.StartsWith(group))
         {

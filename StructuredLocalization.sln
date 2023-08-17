@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localization", "Localization\Localization.csproj", "{705FAB20-1C1A-4F0C-A272-6F2FEC47F5AB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalizationApp", "LocalizationApp\LocalizationApp.csproj", "{FC8BA08C-84D8-41AD-8381-5B7DC27EDFDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlobalApp", "GlobalApp\GlobalApp.csproj", "{FC8BA08C-84D8-41AD-8381-5B7DC27EDFDD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5E786023-3CED-4CC3-B9ED-D49CDCA7C162}"
 	ProjectSection(SolutionItems) = preProject

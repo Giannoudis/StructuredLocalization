@@ -9,8 +9,8 @@ public class AppLocalizer : LocalizerBase
     {
     }
 
-    public string Title => PropertyValue();
-    public string About => PropertyValue();
-    public string Home => PropertyValue();
-    public string Loading => PropertyValue();
+    public string Title => Localization();
+    public string About => Localization();
+    public string Home => Localization();
+    public string Loading => Localization();
 }

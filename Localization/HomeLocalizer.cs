@@ -9,9 +9,9 @@ public class HomeLocalizer : LocalizerBase
     {
     }
 
-    public string Title => PropertyValue();
-    public string Header => PropertyValue();
-    public string Welcome => PropertyValue();
-    public string SurveyTitle => PropertyValue();
-    public string EnumLocalization => PropertyValue();
+    public string Title => Localization();
+    public string Header => Localization();
+    public string Welcome => Localization();
+    public string SurveyTitle => Localization();
+    public string EnumLocalization => Localization();
 }

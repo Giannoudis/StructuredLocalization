@@ -9,8 +9,8 @@ public class CounterLocalizer : LocalizerBase
     {
     }
 
-    public string Title => PropertyValue();
-    public string Click => PropertyValue();
+    public string Title => Localization();
+    public string Click => Localization();
     public string CurrentCount(int currentCount) =>
-        ApplyParameter(PropertyValue(), nameof(currentCount), currentCount);
+        ApplyParameter(Localization(), nameof(currentCount), currentCount);
 }
