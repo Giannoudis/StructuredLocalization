@@ -9,7 +9,7 @@ Structuring localization provides the following benefits
 - Clear translation templates
 
 ### From Global to Local
-To localize an application, it must be designed to be as culturally neutral as a global application. Global applications are extended by the localization of the respective culture. This separation is achieved by placing the localized texts in [Resource Files](https://learn.microsoft.com/en-us/dotnet/api/system.resources.resourcemanager) of type `.resx`.
+To localize an application, it must be designed to be as culturally neutral as a global application. Global applications are extended by the localization of the respective culture. This separation is achieved by placing the localized texts in [resource files](https://learn.microsoft.com/en-us/dotnet/api/system.resources.resourcemanager) of type `.resx`.
 
 The following overview shows the localization of the sample application.
 <p align="center">
@@ -113,11 +113,11 @@ public class Program
 The `SetupLocalization` method performs the following steps
 
 1. Register the [Microsoft Localization Extensions](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.localization)
-2. Register the 'Localizer' in the DI
+2. Register the 'Localizer' in the dependency injection
 3. Set the default language for the current thread
 
 ### Using the Localizer
-The `Localizer` is inserted into the page using `Inject` and replaces the hardcoded text with a readable property or method access.
+The `Localizer` is inserted into the page using `Inject` and replaces the hard-coded text with a readable property or method access.
 ```html
 @page "/counter"
 @using Localization
@@ -191,6 +191,6 @@ The localization project contains the localized texts (`Localizations.resx`) in 
     Language: `de`
     Countries: `de-US` or `de-GB`
 - All placeholders (`count` in the example above) must be included
-- All resources need to be translated
+- All resources must be translated
 
 > Tools like [ReSharper](https://www.jetbrains.com/help/resharper/Reference__Code_Inspections_RESX.html) are helpful in finding broken translation resources.
