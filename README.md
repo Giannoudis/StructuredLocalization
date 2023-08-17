@@ -23,8 +23,8 @@ Localization is represented in Visual Studio as follows:
   - Resources\Localizations.resx - English (default) localization resources
   - Resources\Localizations.de.resx - German localization resources
 - GlobalApp.csproj - Blazor server application
-  - Shared\*.razor - Shared components
-  - Pages\*.razor - Application pages
+  - Shared\\*.razor - Shared components
+  - Pages\\*.razor - Application pages
 
 ### Building Localizers
 All localized texts are divided thematically into localizer classes, which are derived from the base class `LocalizerBase`. The localized texts are accessed through the root class `Localizer`:
@@ -74,8 +74,7 @@ The `Culture` class manages the translation culture:
 - Access path to translation resources
 - Getting and changing the runtime language
 
-| ⚡ For ASP.NET applications, the structure is not set at the application level (`CultureInfo.CurrentCulture` and `CultureInfo.CurrentUICulture`), but at the web request thread level (`CultureInfo.DefaultThreadCurrentCulture` and `CultureInfo.DefaultThreadCurrentUICulture`). |
-|----|
+For ASP.NET applications, the structure is not set at the application level (`CultureInfo.CurrentCulture` and `CultureInfo.CurrentUICulture`), but at the web request thread level (`CultureInfo.DefaultThreadCurrentCulture` and `CultureInfo.DefaultThreadCurrentUICulture`).
 
 ### Providing the Localizer
 The `Localizer` is accessed through dependency injection, which is set up when the application is launched.
@@ -180,7 +179,7 @@ Another scenario is the translation of enumerations whose localization is stored
 }
 ```
 
-### Runtime language switching
+### Runtime Language Switching
 Switching the language at runtime is done via the drop-down list in the header, which activates the language in the background via the `Culture` class:
 <p align="center">
     <img src="docs/LocalizationLanguageSwitch.png" width="600" alt="Language Switch" />
